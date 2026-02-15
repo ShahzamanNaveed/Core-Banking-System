@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CBS – Audit Log</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="p-4">
+    <h2>Audit Log</h2>
+
+    <table class="table table-bordered mt-4">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Operation</th>
+          <th>Table</th>
+          <th>Record</th>
+          <th>User</th>
+          <th>Details</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="auditTable"></tbody>
+    </table>
+
+    <script>
+      async function loadAudit() {
+        const res = await fetch("/api/audit");
+        const data = await res.json();
+        let rows = "";
+        data.forEach((a) => {
+          rows += `<tr>
+               <td>${a.LogID}</td>
+               <td>${a.Operation}</td>
+               <td>${a.TableAffected}</td>
+               <td>${a.RecordID}</td>
+               <td>${a.UserName}</td>
+               <td>${a.Details}</td>
+               <td>${a.CreatedAt}</td>
+             </tr>`;
+        });
+        document.getElementById("auditTable").innerHTML = rows;
+      }
+
+      loadAudit();
+    </script>
+  </body>
+</html>

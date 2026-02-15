@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Core Banking System | Modern Digital Banking</title>
+
+    <!-- Bootstrap + Icons + Animate.css + Fonts -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Your custom stylesheet -->
+    <link href="styles/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- Preloader -->
+   <div id="preloader">
+  <div class="preloader-wrapper">
+    <div class="logo-ring">
+      <i class="fas fa-university"></i>
+      <span class="ring"></span>
+      <span class="ring"></span>
+      <span class="ring"></span>
+    </div>
+    <div class="loading-text">ZSS Bank is loading...</div>
+  </div>
+</div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <div class="brand-logo">
+            <i class="fas fa-university"></i>
+            <span>ZSSBank</span>
+          </div>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#dashboard">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#customers">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#accounts">
+                <i class="fas fa-credit-card"></i>
+                <span>Accounts</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#transactions">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Transactions</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#audit">
+                <i class="fas fa-clipboard-list"></i>
+                <span>Audit Log</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#reports">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="navbar-actions">
+            <div class="user-profile">
+              <div class="user-avatar">
+                <i class="fas fa-user-shield"></i>
+              </div>
+              <span class="user-name">Admin</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+   <section class="hero-section">
+  <div class="hero-bg">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <div class="hero-container">
+    <div class="hero-card">
+      <h1 class="hero-title">
+        Welcome To ZSS <span class="highlight">Bank</span>
+      </h1>
+      <p class="hero-subtitle">
+        Secure, efficient, and user-friendly banking management for the digital era.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number" id="heroCustomers">0</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="heroAccounts">0</div>
+          <div class="stat-label">Active Accounts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="heroBalance">RS 0</div>
+          <div class="stat-label">Total Assets</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="content-section active">
+        <div class="container">
+          <!-- Quick Stats (unchanged) -->
+          <div class="row g-4 mb-5">
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card primary">
+                <div class="stat-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalCustomers">0</h3>
+                  <p>Total Customers</p>
+                </div>
+                <div class="stat-trend">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>12%</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card success">
+                <div class="stat-icon">
+                  <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalAccounts">0</h3>
+                  <p>Active Accounts</p>
+                </div>
+                <div class="stat-trend">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>8%</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card warning">
+                <div class="stat-icon">
+                  <i class="fas fa-rupee-sign"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="totalBalance">RS 0</h3>
+                  <p>Total Balance</p>
+                </div>
+                <div class="stat-trend">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>15%</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+              <div class="stat-card info">
+                <div class="stat-icon">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="stat-info">
+                  <h3 id="todayTransactions">0</h3>
+                  <p>Today's Transactions</p>
+                </div>
+                <div class="stat-trend">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>5%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Recent Activity (unchanged) -->
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="card modern-card">
+                <div class="card-header">
+                  <h4><i class="fas fa-bolt me-2"></i>Quick Actions</h4>
+                </div>
+                <div class="card-body">
+                  <div class="quick-actions-grid">
+                    <div class="action-item" onclick="showSection('customers')">
+                      <div class="action-icon customer">
+                        <i class="fas fa-user-plus"></i>
+                      </div>
+                      <span>Add Customer</span>
+                    </div>
+                    <div class="action-item" onclick="showSection('accounts')">
+                      <div class="action-icon account">
+                        <i class="fas fa-plus-circle"></i>
+                      </div>
+                      <span>Create Account</span>
+                    </div>
+                    <div
+                      class="action-item"
+                      onclick="showSection('transactions')"
+                    >
+                      <div class="action-icon transaction">
+                        <i class="fas fa-exchange-alt"></i>
+                      </div>
+                      <span>Make Transaction</span>
+                    </div>
+                    <div class="action-item" onclick="showSection('audit')">
+                      <div class="action-icon audit">
+                        <i class="fas fa-history"></i>
+                      </div>
+                      <span>Audit Log</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="card modern-card">
+                <div class="card-header">
+                  <h4><i class="fas fa-history me-2"></i>Recent Activity</h4>
+                </div>
+                <div class="card-body">
+                  <div class="activity-list" id="recentActivity">
+                    <!-- Activity items will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Overview (unchanged) -->
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="card modern-card">
+                <div class="card-header">
+                  <h4><i class="fas fa-chart-line me-2"></i>System Overview</h4>
+                </div>
+                <div class="card-body">
+                  <div class="row g-4">
+                    <div class="col-md-4">
+                      <div class="system-metric">
+                        <div class="metric-icon success">
+                          <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="metric-info">
+                          <h4>99.9%</h4>
+                          <p>System Uptime</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="system-metric">
+                        <div class="metric-icon primary">
+                          <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="metric-info">
+                          <h4>100%</h4>
+                          <p>Security Score</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="system-metric">
+                        <div class="metric-icon warning">
+                          <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="metric-info">
+                          <h4>0.2s</h4>
+                          <p>Avg Response Time</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customers Section -->
+     <section id="customers" class="content-section py-5">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center mb-5">
+      <h2 class="fw-bold">👥 Customer Management</h2>
+      <p class="text-muted">Add, view and manage all banking customers in a clean and modern interface.</p>
+
+      <a href="/mnt/data/Final Semester Project.pdf"
+         target="_blank"
+         class="btn btn-outline-primary btn-sm mt-2">
+        <i class="fas fa-file-pdf me-1"></i> View Project Brief
+      </a>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Add Customer Form -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-lg glass-card p-3">
+          <h5 class="mb-3"><i class="fas fa-user-plus me-2"></i>Add New Customer</h5>
+
+          <form id="customerForm" class="modern-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="customerName" name="name" maxlength="100" placeholder="Muhammad Zain"
+                     class="form-control modern-input" required>
+              <div class="invalid-feedback">Please enter full name.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">CNIC Number</label>
+              <input type="text" id="customerCNIC" name="cnic"
+                     placeholder="12345-1234567-1"
+                     pattern="\\d{5}-\\d{7}-\\d"
+                     class="form-control modern-input" required>
+              <div class="invalid-feedback">Enter valid CNIC (12345-1234567-1).</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Contact Number</label>
+              <input type="tel" id="customerContact" name="contact"
+                     placeholder="03XX-XXXXXXX"
+                     pattern="03\\d{2}-\\d{7}"
+                     class="form-control modern-input" required>
+              <div class="invalid-feedback">Enter phone in 03XX-XXXXXXX format.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" id="customerEmail" name="email"
+                     placeholder="example@gmail.com"
+                     pattern="^[a-zA-Z0-9._%+-]+@gmail\\.com$"
+                     class="form-control modern-input" required>
+              <div class="invalid-feedback">Enter a valid Gmail address.</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-2">
+              <i class="fas fa-save me-1"></i> Add Customer
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Customer Table -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-lg p-3">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5><i class="fas fa-list me-2"></i>Customer Directory</h5>
+
+            <input type="text"
+                   id="searchCustomer"
+                   placeholder="Search customer..."
+                   class="form-control w-50">
+          </div>
+
+          <div class="table-responsive table-modern">
+            <table class="table align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>CNIC</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customersTable">
+                <!-- Dynamic Rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <small class="text-muted">
+              Showing <span id="customersShowing">0</span> of
+              <span id="customersTotal">0</span> customers
+            </small>
+            <ul class="pagination mb-0" id="customersPagination"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+  }
+
+  .modern-input {
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .table-modern table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .btn-primary {
+    border-radius: 10px;
+  }
+</style>
+
+      <!-- Accounts Section -->
+     <section id="accounts" class="content-section py-5">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="section-header text-center mb-5">
+      <h2 class="fw-bold">💳 Account Management</h2>
+      <p class="text-muted">Create, monitor and manage bank accounts efficiently.</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Create Account Form -->
+      <div class="col-lg-4">
+        <div class="card border-0 shadow-lg glass-card p-4">
+          <h5 class="mb-3">
+            <i class="fas fa-plus-circle me-2"></i>Create New Account
+          </h5>
+
+          <form id="accountForm" class="modern-form" novalidate>
+
+            <div class="mb-3">
+              <label class="form-label">Customer ID</label>
+              <input type="number"
+                     id="accountCustomerID"
+                     name="custID"
+                     class="form-control modern-input"
+                     min="1" required
+                     placeholder="Enter Customer ID">
+              <div class="invalid-feedback">Enter a valid customer ID.</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Account Type</label>
+              <select id="accountType"
+                      name="type"
+                      class="form-control modern-input"
+                      required>
+                <option value="SAV">Savings Account</option>
+                <option value="CUR">Current Account</option>
+                <option value="CORP">Corporate Account</option>
+                <option value="FD">Fixed Deposit</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Initial Balance (PKR)</label>
+              <input type="number"
+                     id="accountBalance"
+                     name="balance"
+                     class="form-control modern-input"
+                     value="0"
+                     min="0" step="0.01" required>
+              <div class="invalid-feedback">
+                Enter a valid initial balance (>= 0).
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-2">
+              <i class="fas fa-plus me-1"></i> Create Account
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Accounts Table -->
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-lg p-4">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5><i class="fas fa-credit-card me-2"></i>Account Portfolio</h5>
+
+            <input type="text"
+                   id="searchAccounts"
+                   placeholder="Search accounts..."
+                   class="form-control w-50">
+          </div>
+
+          <div class="table-responsive table-modern">
+            <table class="table align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Account No</th>
+                  <th>Customer</th>
+                  <th>Type</th>
+                  <th>Balance</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="accountsTable">
+                <!-- Dynamic rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <small class="text-muted">
+              Showing <span id="accountsShowing">0</span> of
+              <span id="accountsTotal">0</span> accounts
+            </small>
+
+            <ul class="pagination mb-0" id="accountsPagination"></ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Styling -->
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+  }
+
+  .modern-input {
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .table-modern table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .btn-primary {
+    border-radius: 10px;
+  }
+</style>
+      <!-- Transactions Section -->
+     <section id="transactions" class="content-section py-5">
+  <div class="container">
+
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-6">💸 Transaction Management</h2>
+      <p class="text-muted fs-5">Deposit, withdraw, and transfer funds with a beautiful modern interface</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Deposit -->
+      <div class="col-lg-4">
+        <div class="card shadow-lg glass-card border-0 p-3 glow-green">
+          <h4 class="mb-3">
+            <i class="fas fa-arrow-down me-2 text-success"></i>Deposit Funds
+          </h4>
+
+          <form id="depositForm" class="modern-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label">Account Number</label>
+              <input type="number" name="account" id="depositAccount"
+                     class="form-control modern-input" min="1" required
+                     placeholder="Enter account number">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Amount (PKR)</label>
+              <input type="number" name="amount" id="depositAmount"
+                     class="form-control modern-input" min="1" required
+                     step="0.01" placeholder="Enter amount">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Deposit Method</label>
+              <select name="method" id="depositMethod"
+                      class="form-control modern-input" required>
+                <option value="Cash">Cash</option>
+                <option value="Cheque">Cheque</option>
+                <option value="Online">Online Transfer</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Teller / Operator</label>
+              <input type="text" name="user" id="depositUser"
+                     class="form-control modern-input"
+                     placeholder="Operator name" required>
+            </div>
+
+            <button class="btn btn-success w-100 btn-modern">
+              <i class="fas fa-arrow-down me-2"></i> Process Deposit
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Withdrawal -->
+      <div class="col-lg-4">
+        <div class="card shadow-lg glass-card border-0 p-3 glow-gold">
+          <h4 class="mb-3">
+            <i class="fas fa-arrow-up me-2 text-warning"></i>Withdraw Funds
+          </h4>
+
+          <form id="withdrawForm" class="modern-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label">Account Number</label>
+              <input type="number" name="account" id="withdrawAccount"
+                     class="form-control modern-input" min="1" required
+                     placeholder="Enter account number">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Amount (PKR)</label>
+              <input type="number" name="amount" id="withdrawAmount"
+                     class="form-control modern-input" min="1" required
+                     step="0.01" placeholder="Enter amount">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Withdrawal Method</label>
+              <select name="method" id="withdrawMethod"
+                      class="form-control modern-input" required>
+                <option value="Counter">Counter</option>
+                <option value="ATM">ATM</option>
+                <option value="Cheque">Cheque</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Teller / Operator</label>
+              <input type="text" name="user" id="withdrawUser"
+                     class="form-control modern-input"
+                     placeholder="Operator name" required>
+            </div>
+
+            <button class="btn btn-warning w-100 btn-modern">
+              <i class="fas fa-arrow-up me-2"></i> Process Withdrawal
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Transfer -->
+      <div class="col-lg-4">
+        <div class="card shadow-lg glass-card border-0 p-3 glow-blue">
+          <h4 class="mb-3">
+            <i class="fas fa-exchange-alt me-2 text-info"></i>Transfer Funds
+          </h4>
+
+          <form id="transferForm" class="modern-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label">From Account</label>
+              <input type="number" name="fromAccount" id="transferFrom"
+                     class="form-control modern-input" min="1" required
+                     placeholder="Sender account number">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">To Account</label>
+              <input type="number" name="toAccount" id="transferTo"
+                     class="form-control modern-input" min="1" required
+                     placeholder="Receiver account number">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Amount (PKR)</label>
+              <input type="number" name="amount" id="transferAmount"
+                     class="form-control modern-input" min="1" required
+                     step="0.01" placeholder="Enter amount">
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Teller / Operator</label>
+              <input type="text" name="user" id="transferUser"
+                     class="form-control modern-input"
+                     placeholder="Operator name" required>
+            </div>
+
+            <button class="btn btn-info w-100 btn-modern">
+              <i class="fas fa-exchange-alt me-2"></i> Process Transfer
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transaction Result -->
+    <div class="mt-5">
+      <div class="card shadow-lg border-0 glass-card p-4">
+        <h4 class="mb-3">
+          <i class="fas fa-receipt me-2"></i>Transaction Results
+        </h4>
+
+        <div id="transactionResult" class="transaction-result text-center p-5">
+          <div class="result-placeholder">
+            <i class="fas fa-receipt fs-1 text-muted"></i>
+            <p class="text-muted mt-2">No transactions processed yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXTRA MODERN STYLING -->
+<style>
+  .glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+  }
+
+  .modern-input {
+    border-radius: 12px !important;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+  }
+
+  .modern-input:focus {
+    border-color: #6a5acd;
+    box-shadow: 0 0 10px rgba(106, 90, 205, .3);
+  }
+
+  .glow-green { border-top: 4px solid #28a745; }
+  .glow-gold  { border-top: 4px solid #f0ad4e; }
+  .glow-blue  { border-top: 4px solid #0dcaf0; }
+
+  .btn-modern {
+    border-radius: 12px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-weight: 600;
+  }
+</style>
+
+      <!-- Audit Log Section -->
+    <section id="audit" class="content-section py-5">
+  <div class="container-fluid">
+
+    <!-- New Header -->
+    <div class="text-center mb-5">
+      <h1 class="fw-bold">System Audit Center</h1>
+      <p class="text-muted fs-6">Real-time visibility into system activity and database operations</p>
+    </div>
+
+    <div class="row">
+
+      <!-- Left Sidebar Filters -->
+      <div class="col-lg-3">
+        <div class="audit-sidebar shadow-sm p-4 rounded-4">
+
+          <h4 class="mb-4">
+            <i class="fas fa-filter me-2"></i>Filters
+          </h4>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Operation</label>
+            <select id="auditOperationFilter" class="form-select">
+              <option value="">Any</option>
+              <option value="INSERT">INSERT</option>
+              <option value="UPDATE">UPDATE</option>
+              <option value="DELETE">DELETE</option>
+              <option value="COMMIT">COMMIT</option>
+              <option value="ROLLBACK">ROLLBACK</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Table</label>
+            <select id="auditTableFilter" class="form-select">
+              <option value="">Any Table</option>
+              <option value="Customer">Customer</option>
+              <option value="Account">Account</option>
+              <option value="TransactionLog">TransactionLog</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Date From</label>
+            <input type="date" id="auditDateFrom" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Date To</label>
+            <input type="date" id="auditDateTo" class="form-control">
+          </div>
+
+          <div class="d-grid gap-2 mt-4">
+            <button class="btn btn-dark" onclick="app.applyAuditFilters()">
+              Apply Filters
+            </button>
+            <button class="btn btn-outline-secondary" onclick="app.clearAuditFilters()">
+              Reset
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Main Audit Content -->
+      <div class="col-lg-9">
+
+        <!-- Stats Panels - New Horizontal Bars -->
+        <div class="row g-4 mb-4">
+
+          <div class="col-md-3">
+            <div class="audit-bar bg-primary text-white rounded-4 p-3 shadow-sm">
+              <p class="mb-1 small">Total Logs</p>
+              <h2 class="fw-bold mb-0" id="totalAuditLogs">0</h2>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="audit-bar bg-success text-white rounded-4 p-3 shadow-sm">
+              <p class="mb-1 small">Successful</p>
+              <h2 class="fw-bold mb-0" id="successfulOperations">0</h2>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="audit-bar bg-danger text-white rounded-4 p-3 shadow-sm">
+              <p class="mb-1 small">Failed</p>
+              <h2 class="fw-bold mb-0" id="failedOperations">0</h2>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="audit-bar bg-warning text-dark rounded-4 p-3 shadow-sm">
+              <p class="mb-1 small">Today</p>
+              <h2 class="fw-bold mb-0" id="todayOperations">0</h2>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- New Timeline View -->
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-header bg-white border-0 py-3 px-4 d-flex justify-content-between">
+            <h4 class="fw-bold mb-0"><i class="fas fa-stream me-2"></i>Activity Timeline</h4>
+
+            <div>
+              <button class="btn btn-outline-primary btn-sm" onclick="app.refreshAuditLogs()">
+                <i class="fas fa-sync me-1"></i>Refresh
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="app.exportAuditLogs()">
+                <i class="fas fa-download me-1"></i>Export
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body px-4 pb-4">
+
+            <!-- Timeline -->
+            <ul class="audit-timeline list-unstyled" id="auditTable">
+              <!-- JS will insert timeline-style logs here -->
+            </ul>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+              <div class="text-muted">
+                Showing <span id="auditShowing">0</span> of
+                <span id="auditTotal">0</span> records
+              </div>
+              <nav>
+                <ul class="pagination" id="auditPagination"></ul>
+              </nav>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="auditDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content rounded-4 shadow-lg">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold"><i class="fas fa-info-circle me-2"></i>Log Details</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="auditDetailsContent"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="brand-logo">
+              <i class="fas fa-university"></i>
+              <span>ZSSBank</span>
+            </div>
+            <p>Modern Core Banking Solution</p>
+          </div>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Security</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 Core Banking System. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+      <div class="spinner-content">
+        <div class="spinner-logo">
+          <i class="fas fa-university"></i>
+        </div>
+        <div class="spinner-text">Processing...</div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.9.1/chart.min.js"></script>
+    <!-- Link your app script (we will update it next to use new fields & validations) -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
